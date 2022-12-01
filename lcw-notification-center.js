@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  const LOCAL_STORAGE_KEY = "notificationProducts";
+
   function addJQuery() {
     const jQueryScript = document.createElement("script");
     jQueryScript.src = "https://code.jquery.com/jquery-3.6.1.min.js";
@@ -8,7 +10,7 @@
   }
 
   function showModal() {
-    if (isProductPage() && hasThreeProducts()) {
+    if (hasThreeProducts()) {
       console.log("Show Modal");
     } else {
       console.log("Do not Show Modal");
@@ -20,16 +22,36 @@
     return document.location.pathname.includes(productPageIndicator);
   }
 
+  function getNotificationProductsFromLocalStorage() {
+    return localStorage.getItem(LOCAL_STORAGE_KEY)
+      ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      : [];
+  }
+
   function hasThreeProducts() {
-    const notificationProducts = localStorage.getItem("notificationProducts")
-      ? JSON.parse(localStorage.getItem("notificationProducts"))
-      : null;
-    return notificationProducts && notificationProducts.length === 3;
+    const notificationProducts = getNotificationProductsFromLocalStorage();
+    return notificationProducts.length === 3;
+  }
+
+  function addProductIntoLocalStorage() {
+    const notificationProducts = getNotificationProductsFromLocalStorage();
+    if (hasThreeProducts()) {
+      notificationProducts.pop();
+    }
+    notificationProducts.unshift({ name: "Ayakkabi" });
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify(notificationProducts)
+    );
   }
 
   addJQuery();
 
   setTimeout(() => {
-    showModal();
+    if (isProductPage()) {
+      addProductIntoLocalStorage();
+    } else {
+      showModal();
+    }
   }, 1000);
 })();
