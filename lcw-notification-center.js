@@ -6,12 +6,45 @@
   function addJQuery() {
     const jQueryScript = document.createElement("script");
     jQueryScript.src = "https://code.jquery.com/jquery-3.6.1.min.js";
-    document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+    document.getElementsByTagName("body")[0].appendChild(jQueryScript);
+  }
+
+  function getNotificationProductsFromLocalStorage() {
+    return localStorage.getItem(LOCAL_STORAGE_KEY)
+      ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      : [];
+  }
+
+  function createNotificationModal() {
+    $(
+      `
+      <div class="modal" id="notificationModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">DISCOVER OUR DEALS</h5>
+            </div>
+            <div id="notificationModalBody">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+    ).appendTo("body");
+    const notificationModal = $("#notificationModal");
+    const notificationProducts = getNotificationProductsFromLocalStorage();
+    notificationProducts.forEach(element => {
+      $("#notificationModalBody ul").append(`<li>${element.title}</li>`);
+    });
+
+    notificationModal.show();
   }
 
   function showModal() {
     if (hasThreeProducts()) {
-      console.log("Show Modal");
+      createNotificationModal();
     } else {
       console.log("Do not Show Modal");
     }
@@ -20,12 +53,6 @@
   function isProductPage() {
     const productPageIndicator = "urun";
     return document.location.pathname.includes(productPageIndicator);
-  }
-
-  function getNotificationProductsFromLocalStorage() {
-    return localStorage.getItem(LOCAL_STORAGE_KEY)
-      ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-      : [];
   }
 
   function hasThreeProducts() {
