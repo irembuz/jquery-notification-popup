@@ -33,12 +33,40 @@
     return notificationProducts.length === 3;
   }
 
+  function getProductInfoFromCurrentPage() {
+    const title = $(".product-title").first().text().trim();
+    const description = $("#collapseOne li:first").text().trim();
+    const image = $("#productSliderPhotos img:first").attr("src");
+    const productLink = document.location.href;
+
+    const product = {
+      title: title,
+      description: description,
+      image: image,
+      productLink: productLink,
+    };
+
+    return product;
+  }
+
   function addProductIntoLocalStorage() {
     const notificationProducts = getNotificationProductsFromLocalStorage();
+
+    const isCurrentProductIncluded = Boolean(
+      notificationProducts.find((element) => {
+        return element.productLink === document.location.href;
+      })
+    );
+    if (isCurrentProductIncluded) {
+      return;
+    }
+
     if (hasThreeProducts()) {
       notificationProducts.pop();
     }
-    notificationProducts.unshift({ name: "Ayakkabi" });
+
+    const product = getProductInfoFromCurrentPage();
+    notificationProducts.unshift(product);
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify(notificationProducts)
