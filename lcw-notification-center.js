@@ -18,14 +18,16 @@
   function createNotificationModal() {
     $(
       `
-      <div class="modal" id="notificationModal">
+      <div class="modal" id="notificationModal"
+        style="width: 50%; height: 70%; border-radius: 10px; overflow: visible;"
+      >
         <div class="modal-dialog">
-          <div class="modal-content" style='width: 50%; height: 40%; border-radius: 10px; float:right'>
+          <div class="modal-content">
             <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0">
               <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
             </div>
-            <div id="notificationModalBody">
-              <ul style="padding: 0px;">
+            <div id="notificationModalBody" style="width: 100%; height: 100%;">
+              <ul style="width: 100%; height: 100%; padding: 0px;">
               </ul>
             </div>
           </div>
