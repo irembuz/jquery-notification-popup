@@ -14,12 +14,12 @@
       `
       <div class="modal" id="notificationModal">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">DISCOVER OUR DEALS</h5>
+          <div class="modal-content" style='width: 50%; height: 40%; border-radius: 10px; float:right'>
+            <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0">
+              <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
             </div>
             <div id="notificationModalBody">
-              <ul>
+              <ul style="padding: 0px;">
               </ul>
             </div>
           </div>
@@ -29,8 +29,20 @@
     ).appendTo("body");
     const notificationModal = $("#notificationModal");
     const notificationProducts = getNotificationProductsFromLocalStorage();
-    notificationProducts.forEach(element => {
-      $("#notificationModalBody ul").append(`<li>${element.title}</li>`);
+    notificationProducts.forEach((element) => {
+      $("#notificationModalBody ul").append(
+        `
+        <a href=${element.productLink}>
+          <li style="list-style: none; display: flex;">
+            <img width="75" height="75" style="margin: 10px;" src=${element.image}>
+            <div style="display: flex; flex-direction: column; margin-top: 25px">
+              <span>${element.title}</span>
+              <span>${element.description}</span>
+            </div>
+          </li>
+        </a>
+        `
+      );
     });
 
     notificationModal.show();
