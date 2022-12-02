@@ -16,18 +16,18 @@
   }
 
   function createNotificationModal() {
-    $(
+    jQuery(
       `
       <div class="modal" id="notificationModal"
-        style="width: 50%; height: 70%; border-radius: 10px; overflow: visible;"
+        style="width: 50%; height: 70%; overflow: hidden;"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
+        <div class="modal-dialog" style="right: 0px;">
+          <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0">
               <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
             </div>
-            <div id="notificationModalBody" style="width: 100%; height: 100%;">
-              <ul style="width: 100%; height: 100%; padding: 0px;">
+            <div id="notificationModalBody">
+              <ul style="padding: 0px;">
               </ul>
             </div>
           </div>
@@ -35,10 +35,10 @@
       </div>
       `
     ).appendTo("body");
-    const notificationModal = $("#notificationModal");
+    const notificationModal = jQuery("#notificationModal");
     const notificationProducts = getNotificationProductsFromLocalStorage();
     notificationProducts.forEach((element) => {
-      $("#notificationModalBody ul").append(
+      jQuery("#notificationModalBody ul").append(
         `
         <a href=${element.productLink}>
           <li style="list-style: none; display: flex;">
@@ -75,9 +75,9 @@
   }
 
   function getProductInfoFromCurrentPage() {
-    const title = $(".product-title").first().text().trim();
-    const description = $("#collapseOne li:first").text().trim();
-    const image = $("#productSliderPhotos img:first").attr("src");
+    const title = jQuery(".product-title").first().text().trim();
+    const description = jQuery("#collapseOne li:first").text().trim();
+    const image = jQuery("#productSliderPhotos img:first").attr("src");
     const productLink = document.location.href;
 
     const product = {
