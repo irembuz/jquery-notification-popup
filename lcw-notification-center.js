@@ -3,12 +3,6 @@
 
   const LOCAL_STORAGE_KEY = "notificationProducts";
 
-  function addJQuery() {
-    const jQueryScript = document.createElement("script");
-    jQueryScript.src = "https://code.jquery.com/jquery-3.6.1.min.js";
-    document.getElementsByTagName("body")[0].appendChild(jQueryScript);
-  }
-
   function getNotificationProductsFromLocalStorage() {
     return localStorage.getItem(LOCAL_STORAGE_KEY)
       ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -99,8 +93,6 @@
       JSON.stringify(notificationProducts)
     );
   }
-
-  addJQuery();
 
   setTimeout(() => {
     if (isProductPage()) {
