@@ -9,6 +9,18 @@
     document.getElementsByTagName("body")[0].appendChild(jQueryScript);
   }
 
+  function addBootstrap() {
+    const bootstrapCss = document.createElement("link");
+    bootstrapCss.rel = "stylesheet";
+    bootstrapCss.href =
+      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css";
+    document.head.appendChild(bootstrapCss);
+    const bootstrapScript = document.createElement("script");
+    bootstrapScript.src =
+      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js";
+    document.body.appendChild(bootstrapScript);
+  }
+
   function getNotificationProductsFromLocalStorage() {
     return localStorage.getItem(LOCAL_STORAGE_KEY)
       ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -115,6 +127,7 @@
   }
 
   addJQuery();
+  addBootstrap();
 
   setTimeout(() => {
     if (isProductPage()) {
