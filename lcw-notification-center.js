@@ -31,11 +31,11 @@
     jQuery(
       `
       <div class="modal" id="notificationModal"
-        style="width: 40%; height: 70%; overflow: visible;"
+        style="width: 40%; height: 50%; overflow: visible; position: fixed; top: 10%; left: 60%;"
       >
         <div class="modal-dialog" style="width: 100%;">
           <div class="modal-content" style="border-radius: 10px;">
-            <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0">
+            <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0;">
               <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
             </div>
             <div id="notificationModalBody">
