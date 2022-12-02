@@ -31,9 +31,9 @@
     jQuery(
       `
       <div class="modal" id="notificationModal"
-        style="width: 50%; height: 70%; overflow: hidden;"
+        style="width: 40%; height: 70%; overflow: visible;"
       >
-        <div class="modal-dialog" style="right: 0px;">
+        <div class="modal-dialog" style="width: 100%;">
           <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0">
               <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
