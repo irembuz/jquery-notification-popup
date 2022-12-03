@@ -38,6 +38,9 @@
           <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0;">
               <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
+              <button type="button" id="notificationModalCloseButton"
+                class="btn-close btn-close-white" aria-label="Close"
+              ></button>
             </div>
             <div id="notificationModalBody">
               <ul style="padding: 0px;">
@@ -48,7 +51,7 @@
       </div>
       `
     ).appendTo("body");
-    const notificationModal = jQuery("#notificationModal");
+
     const notificationProducts = getNotificationProductsFromLocalStorage();
     notificationProducts.forEach((element) => {
       jQuery("#notificationModalBody ul").append(
@@ -66,7 +69,13 @@
       );
     });
 
+    const notificationModal = jQuery("#notificationModal");
     notificationModal.show();
+
+    const notificationModalCloseButton = jQuery("#notificationModalCloseButton");
+    notificationModalCloseButton.click(function () {
+      notificationModal.hide();
+    });
   }
 
   function showModal() {
