@@ -37,7 +37,7 @@
         <div class="modal-dialog" style="width: 100%;">
           <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #A44476; border-radius: 10px 10px 0 0;">
-              <h5 class="modal-title" style="color: white;">LAST VISITED PRODUCTS</h5>
+              <h5 class="modal-title" style="color: white; font-size: 160%;">LAST VISITED PRODUCTS</h5>
               <button type="button" id="notificationModalCloseButton"
                 class="btn-close btn-close-white" aria-label="Close"
               ></button>
@@ -56,8 +56,8 @@
     notificationProducts.forEach((element) => {
       jQuery("#notificationModalBody ul").append(
         `
-        <a href=${element.productLink}>
-          <li style="list-style: none; display: flex;">
+        <a href=${element.productLink} style="text-decoration: none; color: black;">
+          <li style="list-style: none; display: flex; font-size: 140%;">
             <img width="75" height="75" style="margin: 10px;" src=${element.image}>
             <div style="display: flex; flex-direction: column; margin-top: 25px">
               <span>${element.title}</span>
