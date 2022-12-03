@@ -6,18 +6,19 @@
   function addJQuery() {
     const jQueryScript = document.createElement("script");
     jQueryScript.src = "https://code.jquery.com/jquery-3.6.1.min.js";
-    document.getElementsByTagName("body")[0].appendChild(jQueryScript);
+    document.body.appendChild(jQueryScript);
   }
 
   function addBootstrap() {
     const bootstrapCss = document.createElement("link");
     bootstrapCss.rel = "stylesheet";
     bootstrapCss.href =
-      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css";
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css";
     document.head.appendChild(bootstrapCss);
+
     const bootstrapScript = document.createElement("script");
     bootstrapScript.src =
-      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js";
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js";
     document.body.appendChild(bootstrapScript);
   }
 
