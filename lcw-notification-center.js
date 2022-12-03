@@ -172,14 +172,22 @@
     );
   }
 
-  addJQuery();
-  addBootstrap();
+  function main() {
+    addJQuery();
 
-  setTimeout(() => {
-    if (isProductPage()) {
-      addProductIntoLocalStorage();
-    } else {
-      showModal();
-    }
-  }, 1000);
+    setTimeout(() => {
+      addBootstrap();
+    }, 300);
+
+    setTimeout(() => {
+      if (isProductPage()) {
+        addProductIntoLocalStorage();
+      } else {
+        showModal();
+      }
+    }, 1000);
+  }
+
+  main();
+
 })();
